@@ -1,1 +1,1 @@
-# Web_manga_project
+# Web_manga_projects
