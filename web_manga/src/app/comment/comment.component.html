@@ -1,0 +1,43 @@
+<div>
+    <table class="table table-borderless text-light">
+        <thead>
+                <th scope="col" class="text-warning">
+                    Comment section: 
+                </th>
+        </thead>
+        <tbody>
+            <tr>
+                <div *ngIf="isLogin" class="container">
+                    <form #commentForm="ngForm" (ngSubmit)="onSubmit(commentForm.value)">
+                        <input type="text" name="cmt" class="form-control" placeholder="Enter comment" ngModel>
+                        <input type="submit" value="Comment" class="btn btn-secondary btn-sm">
+                    </form>
+                </div>
+            </tr>
+
+            <tr>
+                <td>
+                    ({{comments.length}} comments)
+                </td>
+            </tr>
+            <tr *ngFor="let cmt of comments.reverse()">
+                <td>
+                    <div class="d-flex flex-column">
+                        <div class="text-info">
+                            <a class="text-danger h5">{{cmt.username}}:</a> {{cmt.date}}
+                        </div>
+                        <div class="px-3">
+                            {{cmt.cmt}}
+                        </div>
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <!-- <div *ngIf="isLogin">
+        <form #commentForm="ngForm" (ngSubmit)="onSubmit(commentForm.value)">
+            <input type="text" name="cmt" class="form-control" placeholder="Enter comment" ngModel>
+            <input type="submit" value="Comment" class="btn btn-primary">
+        </form>
+    </div> -->
+</div>

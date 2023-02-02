@@ -1,1 +1,2 @@
 # Web_manga_projects
+Cái code trong web_manga là tôi lấy từ một project khác của tôi. Anh em nhớ import db bản mới và lúc chạy thì phải chỉnh lại các url trong file manga.service.ts để nó lấy được đúng data
