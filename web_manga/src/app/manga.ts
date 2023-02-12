@@ -31,3 +31,10 @@ export interface IComment{
     cmt: string,
     date: string
 }
+
+export interface IUserControl{
+    ID_reader: number,
+    username: string, 
+    pwd: string,
+    comments: IComment[]
+}
