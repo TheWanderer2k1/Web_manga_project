@@ -26,6 +26,8 @@ export class MangaService {
 
   private _urlGetUsers: string = "http://localhost/webmanga/getUsers.php";
 
+  private _urlUpdateLikeCmt: string = "http://localhost/webmanga/updateLikeCmt.php";
+
   constructor(private http: HttpClient) { }
 
   getListManga(): Observable<IManga[]>{
@@ -85,6 +87,14 @@ export class MangaService {
 
   getUsers(): Observable<IUserControl[]>{
     return this.http.get<IUserControl[]>(this._urlGetUsers);
+  }
+
+  updateLikeComment(id: number, likes: number): Observable<String>{
+    const myHeaders = new HttpHeaders().set('Content-Type', 'application/x-www-form-urlencoded');
+    let body = new HttpParams();
+    body = body.set('id_cmt', id);
+    body = body.set('likes', likes);
+    return this.http.post<String>(this._urlUpdateLikeCmt, body, {headers: myHeaders}); 
   }
 
 
