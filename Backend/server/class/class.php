@@ -54,4 +54,18 @@ class comment{
         $this->date = $date;
     }
 }
+
+class user{
+    public $ID_reader;
+    public $username;
+    public $pwd;
+    public $comments = [];
+
+    public function __construct($ID_reader, $username, $pwd, $comments){
+        $this->ID_reader = $ID_reader;
+        $this->username = $username;
+        $this->pwd = $pwd;
+        $this->comments = $comments;
+    }
+}
 ?>

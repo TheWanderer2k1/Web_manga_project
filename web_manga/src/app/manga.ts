@@ -29,5 +29,13 @@ export interface IUser{
 export interface IComment{
     username: string,
     cmt: string,
-    date: string
+    date: string,
+    likes: number
+}
+
+export interface IUserControl{
+    ID_reader: number,
+    username: string, 
+    pwd: string,
+    comments: IComment[]
 }

@@ -1,7 +1,7 @@
 import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs/internal/Observable';
-import { IChapter, IComment, IManga } from './manga';
+import { IChapter, IComment, IManga, IUserControl } from './manga';
 
 @Injectable({
   providedIn: 'root'
@@ -23,6 +23,10 @@ export class MangaService {
   private _urlAddCmt: string = "http://localhost/webmanga/addComment.php";
 
   private _urlSignin: string = "http://localhost/webmanga/signin.php";
+
+  private _urlGetUsers: string = "http://localhost/webmanga/getUsers.php";
+
+  private _urlUpdateLikeCmt: string = "http://localhost/webmanga/updateLikeCmt.php";
 
   constructor(private http: HttpClient) { }
 
@@ -81,6 +85,17 @@ export class MangaService {
     return this.http.post<number>(this._urlSignin, body, {headers: myHeaders});
   }
 
+  getUsers(): Observable<IUserControl[]>{
+    return this.http.get<IUserControl[]>(this._urlGetUsers);
+  }
+
+  updateLikeComment(id: number, likes: number): Observable<String>{
+    const myHeaders = new HttpHeaders().set('Content-Type', 'application/x-www-form-urlencoded');
+    let body = new HttpParams();
+    body = body.set('id_cmt', id);
+    body = body.set('likes', likes);
+    return this.http.post<String>(this._urlUpdateLikeCmt, body, {headers: myHeaders}); 
+  }
 
 
   // userAuthen(username: string, pwd: string): any{
