@@ -47,11 +47,13 @@ class comment{
     public $username;
     public $cmt;
     public $date;
+    public $likes;
 
-    public function __construct($username, $cmt, $date){
+    public function __construct($username, $cmt, $date, $likes){
         $this->username = $username;
         $this->cmt = $cmt;
         $this->date = $date;
+        $this->likes = $likes;
     }
 }
 
@@ -66,6 +68,14 @@ class user{
         $this->username = $username;
         $this->pwd = $pwd;
         $this->comments = $comments;
+    }
+}
+
+class message{
+    public $msg;
+
+    public function __construct($msg){
+        $this->msg = $msg;
     }
 }
 ?>

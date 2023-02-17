@@ -14,7 +14,7 @@
             $result2 = $conn->query($query);
             
             while ($row1 = $result2->fetch_assoc()){
-                $objComment = new comment($row['username'], $row1['cmt'], $row1['date']);
+                $objComment = new comment($row['username'], $row1['cmt'], $row1['date'], $row1['likes']);
                 $arr_of_comment[] = $objComment;
             }
 
