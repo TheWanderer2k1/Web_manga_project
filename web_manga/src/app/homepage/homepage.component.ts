@@ -12,6 +12,7 @@ import { SearchService } from '../search.service';
 export class HomepageComponent implements OnInit {
   public listManga: IManga[] = [];
   public listGenre: string[];
+  totalChapter: number;
 
   constructor(private _mangaService: MangaService, private route: Router, private _search: SearchService) { }
 

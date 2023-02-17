@@ -6,7 +6,8 @@ export interface IManga{
     numberOfRead: number,
     thumbnail: string,
     description: string,
-    listChapter: IChapter[]
+    listChapter: IChapter[],
+    totalChapter: number
 }
 
 export interface IChapter{

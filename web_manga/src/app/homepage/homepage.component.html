@@ -13,7 +13,7 @@
                                         <img src="{{manga.thumbnail}}" class="img-thumbnail" alt="thumbnail_image" width="190" height="235" (click)="selectManga(manga.name)">
                                     </div>
                                     <div class="px-4" style="width: 450px;">
-                                        <div class="text-info text-uppercase py-2" (click)="selectManga(manga.name)">{{manga.name}}</div>
+                                        <div class="text-info text-uppercase py-2" (click)="selectManga(manga.name)">{{manga.name}} - {{manga.totalChapter}} chap</div>
                                         <div class="py-2" (click)="searchByAuthor(manga.author)" style="color:#FF8C00;">{{manga.author}}</div>
                                         <div class="py-2">Genre: {{manga.genre}}</div>
                                         <div class="text-truncate-container py-2" >{{manga.description}}</div>
