@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jan 29, 2023 at 03:12 PM
+-- Generation Time: Feb 17, 2023 at 03:36 AM
 -- Server version: 10.4.25-MariaDB
 -- PHP Version: 8.1.10
 
@@ -20,6 +20,25 @@ SET time_zone = "+00:00";
 --
 -- Database: `web_manga`
 --
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `admin`
+--
+
+CREATE TABLE `admin` (
+  `ID_admin` int(11) NOT NULL,
+  `admin` varchar(100) NOT NULL,
+  `pwd` varchar(10) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `admin`
+--
+
+INSERT INTO `admin` (`ID_admin`, `admin`, `pwd`) VALUES
+(1, 'hoanganh', '123');
 
 -- --------------------------------------------------------
 
@@ -52,23 +71,36 @@ CREATE TABLE `comment_on_manga` (
   `ID_manga` int(11) NOT NULL,
   `ID_reader` int(11) NOT NULL,
   `cmt` varchar(1000) NOT NULL,
-  `date` date NOT NULL DEFAULT current_timestamp()
+  `date` date NOT NULL,
+  `likes` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `comment_on_manga`
 --
 
-INSERT INTO `comment_on_manga` (`id`, `ID_manga`, `ID_reader`, `cmt`, `date`) VALUES
-(10, 1, 1, 'hello minna san', '2023-01-24'),
-(11, 1, 2, 'konichiwa test1 :))', '2023-01-24'),
-(12, 3, 2, 'まだコンテンツがないね', '2023-01-24'),
-(13, 1, 1, 'This manga seems interesting', '2023-01-24'),
-(14, 1, 1, 'hello', '2023-01-24'),
-(15, 4, 1, 'just test some comment here', '2023-01-24'),
-(16, 4, 3, 'comment service seems ok', '2023-01-24'),
-(17, 3, 9, 'Sign in successful', '2023-01-24'),
-(18, 3, 16, 'I\'ll add chapter later. Please be patient :))', '2023-01-24');
+INSERT INTO `comment_on_manga` (`id`, `ID_manga`, `ID_reader`, `cmt`, `date`, `likes`) VALUES
+(10, 1, 1, 'hello minna san', '2023-01-24', 10),
+(11, 1, 2, 'konichiwa test1 :))', '2023-01-24', 0),
+(12, 3, 2, 'まだコンテンツがないね', '2023-01-24', 0),
+(13, 1, 1, 'This manga seems interesting', '2023-01-24', 0),
+(14, 1, 1, 'hello', '2023-01-24', 0),
+(15, 4, 1, 'just test some comment here', '2023-01-24', 0),
+(16, 4, 3, 'comment service seems ok', '2023-01-24', 0),
+(17, 3, 9, 'Sign in successful', '2023-01-24', 0),
+(18, 3, 16, 'I\'ll add chapter later. Please be patient :))', '2023-01-24', 0),
+(19, 1, 1, 'dwadwada', '2023-02-01', 0),
+(20, 1, 1, 'sQDWADA', '2023-02-15', 0),
+(21, 1, 1, 'sQDWADA', '2023-02-15', 0),
+(22, 1, 1, 'dwadd', '2023-02-15', 0),
+(23, 3, 16, 'dwadd', '2023-02-15', 0),
+(24, 3, 16, 'dwad', '2023-02-15', 0),
+(25, 4, 16, 'comment', '2023-02-15', 0),
+(26, 4, 16, 'dwad', '2023-02-15', 0),
+(27, 1, 16, '1323', '2023-02-15', 0),
+(29, 10, 16, 'dwad', '2023-02-15', 0),
+(30, 1, 1, 'hello', '2023-02-17', 0),
+(31, 8, 4, 'this is my first comment', '2023-02-17', 0);
 
 -- --------------------------------------------------------
 
@@ -257,6 +289,12 @@ INSERT INTO `reader` (`ID_reader`, `username`, `pwd`) VALUES
 --
 
 --
+-- Indexes for table `admin`
+--
+ALTER TABLE `admin`
+  ADD PRIMARY KEY (`ID_admin`);
+
+--
 -- Indexes for table `chapter`
 --
 ALTER TABLE `chapter`
@@ -308,6 +346,12 @@ ALTER TABLE `reader`
 --
 
 --
+-- AUTO_INCREMENT for table `admin`
+--
+ALTER TABLE `admin`
+  MODIFY `ID_admin` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
 -- AUTO_INCREMENT for table `chapter`
 --
 ALTER TABLE `chapter`
@@ -317,7 +361,7 @@ ALTER TABLE `chapter`
 -- AUTO_INCREMENT for table `comment_on_manga`
 --
 ALTER TABLE `comment_on_manga`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=32;
 
 --
 -- AUTO_INCREMENT for table `image_content`
@@ -335,7 +379,7 @@ ALTER TABLE `manga`
 -- AUTO_INCREMENT for table `reader`
 --
 ALTER TABLE `reader`
-  MODIFY `ID_reader` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
+  MODIFY `ID_reader` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
 
 --
 -- Constraints for dumped tables

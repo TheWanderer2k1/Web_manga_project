@@ -11,7 +11,10 @@ import { FormsModule } from '@angular/forms';
 import { LoginService } from './login.service';
 import { SearchService } from './search.service';
 import { CommentComponent } from './comment/comment.component';
+import { DashboardComponent } from './admin/dashboard/dashboard.component';
+import { UserManagementComponent } from './admin/user-management/user-management.component';
 import { AdminComponent } from './admin/admin.component';
+import { NgxPaginationModule } from 'ngx-pagination';
 
 @NgModule({
   declarations: [
@@ -20,13 +23,16 @@ import { AdminComponent } from './admin/admin.component';
     FooterComponent,
     routingComponents,
     CommentComponent,
-    AdminComponent
+    AdminComponent,
+    DashboardComponent,
+    UserManagementComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    FormsModule
+    FormsModule,
+    NgxPaginationModule
   ],
   providers: [MangaService, LoginService, SearchService],
   bootstrap: [AppComponent]

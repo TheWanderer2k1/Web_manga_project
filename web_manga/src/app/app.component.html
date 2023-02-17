@@ -13,19 +13,33 @@
   <script src="https://kit.fontawesome.com/4bb5f64390.js"></script>
   <title>Webmanga</title>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link
+        href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
+        rel="stylesheet">
 </head>
 <body class="d-flex flex-column min-vh-100 bg-dark overflow-auto">
-  <div class="container w-75 p-0" style="background-color: #222;">
-    <app-header></app-header>
-  </div>
-  <p></p>
-  <main class="container w-75 py-4" style="background-color: #222;">
+  <!-- <main> -->
+  <ng-container *ngIf="!isAdmin; else adminTemplate">
+    <div class="container w-75 p-0" style="background-color: #222;">
+      <app-header></app-header>
+    </div>
+    <p></p>
+    <main class="container w-75 py-4" style="background-color: #222;">
+      <router-outlet></router-outlet>
+    </main>
+    <p></p>
+    <footer class="container w-75 mt-auto" style="background-color: #222;">
+      <app-footer></app-footer>
+    </footer>
+  </ng-container>
+  <ng-template #adminTemplate>
     <router-outlet></router-outlet>
-  </main>
-  <p></p>
-  <footer class="container w-75 mt-auto" style="background-color: #222;">
+  </ng-template>
+  <!-- </main> -->
+  <!-- <p></p> -->
+  <!-- <footer class="container w-75 mt-auto" style="background-color: #222;">
     <app-footer></app-footer>
-  </footer>
+  </footer> -->
 
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.3/jquery.min.js" integrity="sha512-STof4xm1wgkfm7heWqFJVn58Hm3EtS31XFaagaa8VMReCXAkQnJZ+jEy8PCC/iT18dFy95WcExNHFTqLyp72eQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js" integrity="sha512-bPs7Ae6pVvhOSiIcyUClR7/q2OAsRiovw4vAkX+zJbw3ShAeeqezq50RIIcIURq7Oa20rW2n2q+fyXBNcU9lrw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
