@@ -7,7 +7,8 @@ import { IChapter, IComment, IManga, IUserControl } from './manga';
   providedIn: 'root'
 })
 export class MangaService {
-  private _urlPrefix: string = "http://localhost/server/"; //change here if you place in a different folder
+  // private _urlPrefix: string = "http://localhost/server/"; //change here if you place in a different folder
+  private _urlPrefix: string = "http://localhost/LTW/webmanga/"; //Duc Huy
 
   private _urlListManga: string = this._urlPrefix + "getListManga.php";
 
@@ -46,7 +47,7 @@ export class MangaService {
   getListManga(): Observable<IManga[]>{
     return this.http.get<IManga[]>(this._urlListManga);
   }
-  
+
   getManga(name: string): Observable<IManga>{
     let queryParam = new HttpParams().append("name", name);
 
@@ -103,11 +104,15 @@ export class MangaService {
     return this.http.get<IUserControl[]>(this._urlGetUsers);
   }
 
+  deleteUsers(id: any){
+    return this.http.delete(`${this._urlGetUsers}/${id}`);
+  }
+
   updateLikeComment(id: number, likes: number): Observable<String>{
     const myHeaders = new HttpHeaders().set('Content-Type', 'application/x-www-form-urlencoded');
     let body = new HttpParams();
     body = body.set('id_cmt', id);
     body = body.set('likes', likes);
-    return this.http.post<String>(this._urlUpdateLikeCmt, body, {headers: myHeaders}); 
+    return this.http.post<String>(this._urlUpdateLikeCmt, body, {headers: myHeaders});
   }
 }

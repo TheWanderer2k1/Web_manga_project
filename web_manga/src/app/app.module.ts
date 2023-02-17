@@ -13,6 +13,7 @@ import { SearchService } from './search.service';
 import { CommentComponent } from './comment/comment.component';
 import { DashboardComponent } from './admin/dashboard/dashboard.component';
 import { UserManagementComponent } from './admin/user-management/user-management.component';
+import { AdminComponent } from './admin/admin.component';
 
 @NgModule({
   declarations: [

@@ -23,42 +23,48 @@ export class AdminComponent implements OnInit {
   choosingNavStyle: any = {
     'background-color': '#FF5C40',
   };
-  constructor(private _mangaService: MangaService, private _login: LoginService, private _route: Router) { }
-
+  constructor(
+    private _mangaService: MangaService,
+    private _login: LoginService,
+    private _route: Router
+  ) {}
 
   ngOnInit(): void {
     let admin = this._login.getAdmin();
     if (admin == undefined || admin == null)
-      this._route.navigate(['/login']).then(()=>{
-      window.location.reload();
-    });
+      this._route.navigate(['/login']).then(() => {
+        window.location.reload();
+      });
 
-    this._mangaService.getUsers().subscribe(data => {
+    this._mangaService.getUsers().subscribe((data) => {
       this.listUser = data;
       console.log(this.listUser);
     });
+  }
 
-    
   onClickNav(nav: NavItem) {
     switch (nav) {
       case NavItem.Dashboard:
-        this.router.navigate(['/admin/dashboard']);
+        this._route.navigate(['/admin/dashboard']);
         this.choosingNav = nav;
         break;
       case NavItem.User:
-        this.router.navigate(['/admin/user-management']);
+        this._route.navigate(['/admin/user-management']);
         this.choosingNav = nav;
         break;
+      case NavItem.Exit:
+        this._route.navigate(['/homepage']);
+        break;
       default:
-        this.router.navigate(['/admin/dashboard']);
+        this._route.navigate(['/admin/dashboard']);
         this.choosingNav = nav;
         break;
     }
-    if (nav == NavItem.Exit) {
-      this.router.navigate(['/homepage']);
-    } else if (nav == NavItem.User) {
-      this.router.navigate(['/admin/user-management']);
-      this.choosingNav = nav;
-    } else this.choosingNav = nav;
+    // if (nav == NavItem.Exit) {
+    //   this._route.navigate(['/homepage']);
+    // } else if (nav == NavItem.User) {
+    //   this._route.navigate(['/admin/user-management']);
+    //   this.choosingNav = nav;
+    // } else this.choosingNav = nav;
   }
 }
