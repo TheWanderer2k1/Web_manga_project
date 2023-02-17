@@ -7,28 +7,41 @@ import { IChapter, IComment, IManga, IUserControl } from './manga';
   providedIn: 'root'
 })
 export class MangaService {
+  private _urlPrefix: string = "http://localhost/server/"; //change here if you place in a different folder
 
-  private _urlListManga: string ="http://localhost/webmanga/getListManga.php";
+  private _urlListManga: string = this._urlPrefix + "getListManga.php";
 
-  private _urlManga: string ="http://localhost/webmanga/getManga.php";
+  private _urlManga: string = this._urlPrefix + "getManga.php";
 
-  private _urlChapter: string ="http://localhost/webmanga/getListChapter.php";
+  private _urlChapter: string = this._urlPrefix + "getListChapter.php";
 
-  private _urlSearch: string = "http://localhost/webmanga/searchManga.php";
+  private _urlSearch: string = this._urlPrefix + "searchManga.php";
 
-  private _urlAuthen: string = "http://localhost/webmanga/login.php";
+  private _urlAuthen: string = this._urlPrefix + "login.php";
 
-  private _urlGetCmt: string = "http://localhost/webmanga/getListComments.php";
+  private _urlGetCmt: string = this._urlPrefix + "getListComments.php";
 
-  private _urlAddCmt: string = "http://localhost/webmanga/addComment.php";
+  private _urlAddCmt: string = this._urlPrefix + "addComment.php";
 
-  private _urlSignin: string = "http://localhost/webmanga/signin.php";
+  private _urlSignin: string = this._urlPrefix + "signin.php";
 
-  private _urlGetUsers: string = "http://localhost/webmanga/getUsers.php";
+  private _urlGetUsers: string = this._urlPrefix + "getUsers.php";
 
-  private _urlUpdateLikeCmt: string = "http://localhost/webmanga/updateLikeCmt.php";
+  private _urlUpdateLikeCmt: string = this._urlPrefix + "updateLikeCmt.php";
+
+  private _urlLogin: string = this._urlPrefix + "login.php";
+
+  private _urlAdminLogin: string = this._urlPrefix + "adminLogin.php";
 
   constructor(private http: HttpClient) { }
+
+  getUrlLogin(): string{
+    return this._urlLogin;
+  }
+
+  getUrlAdminLogin(): string{
+    return this._urlAdminLogin;
+  }
 
   getListManga(): Observable<IManga[]>{
     return this.http.get<IManga[]>(this._urlListManga);
@@ -68,12 +81,13 @@ export class MangaService {
     return this.http.get<IComment[]>(this._urlGetCmt, {params: queryParam});
   }
 
-  addComment(ID_manga: number, ID_reader: number, cmt: string): Observable<IComment>{
+  addComment(ID_manga: number, ID_reader: number, cmt: string, date: string): Observable<IComment>{
     const myHeaders = new HttpHeaders().set('Content-Type', 'application/x-www-form-urlencoded');
     let body = new HttpParams();
     body = body.set('ID_manga', ID_manga);
     body = body.set('ID_reader', ID_reader);
     body = body.set('cmt', cmt);
+    body = body.set('date', date);
     return this.http.post<IComment>(this._urlAddCmt, body, {headers: myHeaders});
   }
 
@@ -96,15 +110,4 @@ export class MangaService {
     body = body.set('likes', likes);
     return this.http.post<String>(this._urlUpdateLikeCmt, body, {headers: myHeaders}); 
   }
-
-
-  // userAuthen(username: string, pwd: string): any{
-  //   //console.log(this._urlAuthen + '?username=' + username + '&pwd=' + pwd);
-  //   return fetch(this._urlAuthen + '?username=' + username + '&pwd=' + pwd).then((res) => res.json()).then(
-  //     msg => {
-  //       //console.log(msg);
-  //       return msg.msg;
-  //     }
-  //   )
-  // }
 }
