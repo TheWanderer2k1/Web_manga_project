@@ -1,12 +1,16 @@
 .s-container {
   color: #fff;
-  background-color: #bbb;
+}
+
+.s-container hr {
+  margin-top: 0;
 }
 
 .side-bar {
   width: 260px;
   height: 100vh;
   background-color: #aaa;
+  padding: 0 12px;
 }
 
 .side-bar__logo {
@@ -45,7 +49,7 @@
 }
 
 .body-header {
-  height: 48px;
+  height: 60px;
   /* background-color: red; */
   justify-content: space-between;
 }

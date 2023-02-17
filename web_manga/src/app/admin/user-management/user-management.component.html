@@ -1,3 +1,6 @@
+<h2 class="page-title">
+  List All Users
+</h2>
 <table class="table">
   <thead>
     <tr>
@@ -11,7 +14,10 @@
       <td>{{data?.ID_reader}}</td>
       <td>{{data?.username}}</td>
       <td><button type="button" class="btn btn-danger" (click)="deleteUser(data?.ID_reader)"><i class="fas fa-trash"></i></button>
+        <button type="button" class="btn btn-warning ml-6" (click)="lockUser(data?.ID_reader)"><i class="fas fa-lock"></i></button>
+        <button type="button" class="btn btn-outline-warning ml-6" (click)="lockUser(data?.ID_reader)"><i class="fas fa-lock-open"></i></button>
       </td>
     </tr>
+
   </tbody>
 </table>

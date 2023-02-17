@@ -25,4 +25,6 @@ export class UserManagementComponent implements OnInit {
     this._mangaService.deleteUsers(userId).subscribe((response) => {});
   }
 
+  lockUser(userId: any) {}
+
 }
