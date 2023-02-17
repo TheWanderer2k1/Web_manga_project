@@ -1,14 +1,14 @@
 import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs/internal/Observable';
-import { IChapter, IComment, IManga, IUserControl } from './manga';
+import { IChapter, IComment, IManga, IUserControl, message } from './manga';
 
 @Injectable({
   providedIn: 'root'
 })
 export class MangaService {
-  // private _urlPrefix: string = "http://localhost/server/"; //change here if you place in a different folder
-  private _urlPrefix: string = "http://localhost/LTW/webmanga/"; //Duc Huy
+  private _urlPrefix: string = "http://localhost/server/"; //change here if you place in a different folder
+  // private _urlPrefix: string = "http://localhost/LTW/webmanga/"; //Duc Huy
 
   private _urlListManga: string = this._urlPrefix + "getListManga.php";
 
@@ -33,6 +33,10 @@ export class MangaService {
   private _urlLogin: string = this._urlPrefix + "login.php";
 
   private _urlAdminLogin: string = this._urlPrefix + "adminLogin.php";
+
+  private _urlDeleteUser: string = this._urlPrefix + "deleteUser.php";
+
+  private _urlLockUserManage: string = this._urlPrefix + "lockUser.php";
 
   constructor(private http: HttpClient) { }
 
@@ -104,8 +108,20 @@ export class MangaService {
     return this.http.get<IUserControl[]>(this._urlGetUsers);
   }
 
-  deleteUsers(id: any){
-    return this.http.delete(`${this._urlGetUsers}/${id}`);
+  deleteUsers(id: any): Observable<message>{
+    const myHeaders = new HttpHeaders().set('Content-Type', 'application/x-www-form-urlencoded');
+    let body = new HttpParams();
+    body = body.set('ID_reader', id);
+    return this.http.post<message>(this._urlDeleteUser, body, {headers: myHeaders});
+    //return this.http.delete(`${this._urlGetUsers}/${id}`);
+  }
+
+  lockAccManage(id: number, lock: number): Observable<message>{
+    const myHeaders = new HttpHeaders().set('Content-Type', 'application/x-www-form-urlencoded');
+    let body = new HttpParams();
+    body = body.set('lock', lock);
+    body = body.set('ID_reader', id);
+    return this.http.post<message>(this._urlLockUserManage, body, {headers: myHeaders});
   }
 
   updateLikeComment(id: number, likes: number): Observable<String>{

@@ -41,11 +41,14 @@ export class LoginComponent implements OnInit {
       response =>{
         console.log(response);
         if (response != null || response != undefined){
-          this._login.userLogin(response.ID_reader ,response.username);
+          if (response.lock_status == 0){
+            this._login.userLogin(response.ID_reader ,response.username);
 
-          this.route.navigate(['/homepage']).then(()=>{
-            window.location.reload();
-          });
+            this.route.navigate(['/homepage']).then(()=>{
+              window.location.reload();
+            });
+          }else
+            alert("Your account has been locked!");
         }else
           alert('wrong password or account not exist!');
 

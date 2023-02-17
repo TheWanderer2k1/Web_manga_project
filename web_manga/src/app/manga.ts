@@ -44,3 +44,7 @@ export interface IUserControl{
     pwd: string,
     comments: IComment[]
 }
+
+export interface message{
+    msg: string;
+}

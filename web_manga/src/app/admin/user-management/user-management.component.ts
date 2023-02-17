@@ -22,9 +22,25 @@ export class UserManagementComponent implements OnInit {
   }
 
   deleteUser(userId: any) {
-    this._mangaService.deleteUsers(userId).subscribe((response) => {});
+    //delete ok, need update on html
+    //console.log(userId);
+    this._mangaService.deleteUsers(userId).subscribe((response) => {
+      alert(response.msg);
+      window.location.reload();
+    });
   }
 
-  lockUser(userId: any) {}
+  lockUser(userId: any) {
+    //console.log(userId);
+    this._mangaService.lockAccManage(userId, 1).subscribe((res) => {
+      alert(res.msg);
+    })
+  }
+
+  unlockUser(userId: any){
+    this._mangaService.lockAccManage(userId, 0).subscribe((res) => {
+      alert(res.msg);
+    })
+  }
 
 }

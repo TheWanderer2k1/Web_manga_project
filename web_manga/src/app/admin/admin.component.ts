@@ -38,7 +38,7 @@ export class AdminComponent implements OnInit {
 
     this._mangaService.getUsers().subscribe((data) => {
       this.listUser = data;
-      console.log(this.listUser);
+      //console.log(this.listUser);
     });
   }
 
