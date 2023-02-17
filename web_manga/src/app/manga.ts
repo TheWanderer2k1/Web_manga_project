@@ -26,6 +26,11 @@ export interface IUser{
     expiry: number
 }
 
+export interface IAdmin{
+    ID_admin: number,
+    admin: string
+}
+
 export interface IComment{
     username: string,
     cmt: string,
