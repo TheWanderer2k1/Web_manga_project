@@ -11,7 +11,6 @@ import { MangaService } from '../manga.service';
 export class CommentComponent implements OnInit {
   @Input() manga: IManga;
   comments: IComment[];
-  //comment: IComment;
   user: IUser;
   isLogin: boolean;
 
@@ -27,16 +26,23 @@ export class CommentComponent implements OnInit {
 
     this._manga.getListComments(this.manga.ID_manga).subscribe(
       data => {
-        //if (data.length > 0)
-          this.comments = data;
+        this.comments = data;
       }
     );
+
+    //bug khong lay duoc msg plain text
+    // this._manga.updateLikeComment(10, 10).subscribe(
+    //   data => {
+    //     console.log(data);
+    //   }
+    // );
   }
 
   onSubmit(data: any){
-    this._manga.addComment(this.manga.ID_manga, this.user.ID_reader, data.cmt).subscribe(
+    let date = new Date();
+    let today = [date.getFullYear(), date.getMonth() + 1, date.getDate()].join('-');
+    this._manga.addComment(this.manga.ID_manga, this.user.ID_reader, data.cmt, today).subscribe(
       data =>{
-        //this.comment = data;
         this.comments.push(data);
       }
     )

@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { Route, Router } from '@angular/router';
+import { LoginService } from '../login.service';
+import { IManga, IUserControl } from '../manga';
+import { MangaService } from '../manga.service';
 
 enum NavItem {
   Dashboard = 0,
@@ -13,19 +16,29 @@ enum NavItem {
   styleUrls: ['./admin.component.css'],
 })
 export class AdminComponent implements OnInit {
+  //listManga: IManga[];
+  listUser: IUserControl[];
   readonly NavItem = NavItem;
   choosingNav: any = NavItem.Dashboard;
   choosingNavStyle: any = {
     'background-color': '#FF5C40',
   };
-  constructor(private router: Router) {}
+  constructor(private _mangaService: MangaService, private _login: LoginService, private _route: Router) { }
+
 
   ngOnInit(): void {
-  }
-  deleteUser() {}
+    let admin = this._login.getAdmin();
+    if (admin == undefined || admin == null)
+      this._route.navigate(['/login']).then(()=>{
+      window.location.reload();
+    });
 
-  deleteManga() {}
+    this._mangaService.getUsers().subscribe(data => {
+      this.listUser = data;
+      console.log(this.listUser);
+    });
 
+    
   onClickNav(nav: NavItem) {
     switch (nav) {
       case NavItem.Dashboard:

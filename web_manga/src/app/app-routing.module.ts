@@ -43,4 +43,5 @@ export const routingComponents = [
   PageNotFoundComponent,
   LoginComponent,
   SigninComponent,
+  AdminComponent,
 ];

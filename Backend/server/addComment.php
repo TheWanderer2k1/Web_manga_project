@@ -5,17 +5,17 @@
         require('./connection/db.inc.php');
 
         $query = 'INSERT INTO comment_on_manga (ID_manga, ID_reader, cmt, date) VALUES ("'. $_POST['ID_manga'] .
-        '", "'. $_POST['ID_reader'] .'", "'. $_POST['cmt'] .'", current_timestamp())';
+        '", "'. $_POST['ID_reader'] .'", "'. $_POST['cmt'] .'", "'. $_POST['date'] .'")';
         if ($conn->query($query)){
             //echo 'success';
-            $query = 'SELECT reader.username, comment_on_manga.cmt, comment_on_manga.date 
+            $query = 'SELECT reader.username, comment_on_manga.cmt, comment_on_manga.date,  comment_on_manga.likes
             FROM comment_on_manga INNER JOIN reader ON comment_on_manga.ID_reader = reader.ID_reader 
             WHERE comment_on_manga.ID_manga = "'. $_POST['ID_manga'] .'" AND comment_on_manga.ID_reader = "'. $_POST['ID_reader'] .'" AND comment_on_manga.cmt = "'. $_POST['cmt'] .'" 
             ORDER BY comment_on_manga.date DESC LIMIT 1';
 
             $result = $conn->query($query);
             $row = $result->fetch_assoc();
-            $comment = new comment($row['username'], $row['cmt'], $row['date']);
+            $comment = new comment($row['username'], $row['cmt'], $row['date'], $row['likes']);
 
             header("Access-Control-Allow-Origin: *");
             echo json_encode($comment, JSON_UNESCAPED_UNICODE);

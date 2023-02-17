@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { IUser } from './manga';
+import { IAdmin, IUser } from './manga';
 
 @Injectable({
   providedIn: 'root'
@@ -33,5 +33,23 @@ export class LoginService {
       userObj = null;
     }
     return userObj;
+  }
+
+  adminLogin(ID_admin: number, admin: string){
+    let adminObj: IAdmin = {
+      ID_admin: ID_admin,
+      admin: admin
+    }
+
+    sessionStorage.setItem('adminSession', JSON.stringify(adminObj));
+  }
+
+  adminLogout(){
+    sessionStorage.removeItem('adminSession');
+  }
+
+  getAdmin(): IAdmin{
+    let adminObj = JSON.parse(sessionStorage.getItem('adminSession')!);
+    return adminObj;
   }
 }

@@ -11,7 +11,6 @@ import { FormsModule } from '@angular/forms';
 import { LoginService } from './login.service';
 import { SearchService } from './search.service';
 import { CommentComponent } from './comment/comment.component';
-import { AdminComponent } from './admin/admin.component';
 import { DashboardComponent } from './admin/dashboard/dashboard.component';
 import { UserManagementComponent } from './admin/user-management/user-management.component';
 

@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { LoginService } from '../login.service';
-import { IManga, IUser } from '../manga';
+import { IAdmin, IManga, IUser } from '../manga';
 import { MangaService } from '../manga.service';
 import { SearchResultScreenComponent } from '../search-result-screen/search-result-screen.component';
 import { SearchService } from '../search.service';
@@ -14,35 +14,34 @@ import { SearchService } from '../search.service';
 export class HeaderComponent implements OnInit {
   username: string;
   user: IUser;
+  admin: IAdmin;
   hide: boolean;
+  hide_admin: boolean;
 
   constructor(private router: Router, private _login: LoginService) { }
 
   ngOnInit(): void {
-    //let elements = document.getElementsByName("loginOrSignup");
-    this.user = this._login.getUser();
-
-    if (this.user != null){
-      // elements.forEach(e => {
-      //   e.hidden = true;
-      // });
+    this.admin = this._login.getAdmin();
+    //do something
+    if (this.admin != null){
+      this._login.userLogout();
+      this.hide_admin = true;
       this.hide = true;
-
-      // document.getElementById("username")!.hidden = false;
-      // document.getElementById("Logout")!.hidden = false;
-
-
-      this.username = this.user.username;
+      this.username = this.admin.admin;
     }else{
-      // elements.forEach(e => {
-      //   e.hidden = false;
-      // });
-  
-      this.hide = false;
-
-      // document.getElementById("username")!.hidden = true;
-      // document.getElementById("Logout")!.hidden = true;
+      this.hide_admin = false;
+      this.user = this._login.getUser();
+      //do something
+      if (this.user != null){
+        this.hide = true;
+        this.username = this.user.username;
+      }else{
+        this.hide = false;
     }
+    }
+
+    //let elements = document.getElementsByName("loginOrSignup");
+    
   }
 
   onClickSubmit(data: any){
@@ -56,6 +55,7 @@ export class HeaderComponent implements OnInit {
   }
 
   onClickLogout(){
+    this._login.adminLogout();
     this._login.userLogout();
     this.router.navigate(['/homepage']).then(()=>{
       window.location.reload();
