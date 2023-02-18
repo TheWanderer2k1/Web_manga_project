@@ -3,7 +3,7 @@
 
         $server = 'localhost';
         $user = 'root';
-        $password = '';
+        $password = 'duyproxy1';
         $dbName = 'web_manga';      
 
         $conn->connect($server, $user, $password, $dbName);

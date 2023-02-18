@@ -2,6 +2,8 @@ import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { ReadpageComponent } from './readpage.component';
 
+import { CommentComponent } from '../comment/comment.component';
+
 describe('ReadpageComponent', () => {
   let component: ReadpageComponent;
   let fixture: ComponentFixture<ReadpageComponent>;

@@ -13,7 +13,6 @@ export class ReadpageComponent implements OnInit {
   public currentChapter: IChapter;
   public currentChapterIndex: number;
   public currentManga: string;
-
   constructor(private _mangaService: MangaService, private activateRoute: ActivatedRoute, private route: Router) { }
 
   ngOnInit(): void {
