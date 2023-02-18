@@ -10,17 +10,8 @@
         $query = "select * from reader";
         $result1 = $conn->query($query);
         while ($row = $result1->fetch_assoc()){
-            $query = 'select * from comment_on_manga where ID_reader = "' . $row['ID_reader'] . '"';
-            $result2 = $conn->query($query);
-            
-            while ($row1 = $result2->fetch_assoc()){
-                $objComment = new comment($row['username'], $row1['cmt'], $row1['date'], $row1['likes']);
-                $arr_of_comment[] = $objComment;
-            }
-
-            $objUser = new user($row['ID_reader'], $row['username'], $row['pwd'], $arr_of_comment);
+            $objUser = new user($row['ID_reader'], $row['username'], $row['pwd'], $row['lock_status']);
             $arr_of_user[] = $objUser;
-            $arr_of_comment = [];
         }
 
         header("Access-Control-Allow-Origin: *");
