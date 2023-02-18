@@ -12,13 +12,7 @@
         }else
             $message = 'update khong thanh cong';
 
-<<<<<<< HEAD
         header("Access-Control-Allow-Origin: *");
-=======
-        //bug khong parse duoc msg
-        header("Access-Control-Allow-Origin: *");
-        // header("Content-Type: text/plain");
->>>>>>> 0790cccb211f6ad17558ee408e0633d6edfb5249
         echo json_encode(new message($message), JSON_UNESCAPED_UNICODE);
 
     }catch(mysqli_sql_exception $e){

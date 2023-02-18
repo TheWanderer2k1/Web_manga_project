@@ -3,11 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
-<<<<<<< HEAD
--- Generation Time: Feb 17, 2023 at 04:07 PM
-=======
--- Generation Time: Feb 17, 2023 at 03:36 AM
->>>>>>> 0790cccb211f6ad17558ee408e0633d6edfb5249
+-- Generation Time: Feb 18, 2023 at 03:39 AM
 -- Server version: 10.4.25-MariaDB
 -- PHP Version: 8.1.10
 
@@ -104,11 +100,9 @@ INSERT INTO `comment_on_manga` (`id`, `ID_manga`, `ID_reader`, `cmt`, `date`, `l
 (27, 1, 16, '1323', '2023-02-15', 0),
 (29, 10, 16, 'dwad', '2023-02-15', 0),
 (30, 1, 1, 'hello', '2023-02-17', 0),
-<<<<<<< HEAD
-(34, 6, 1, 'Truyện này còn chưa có thời gian đọc nữa', '2023-02-17', 0);
-=======
-(31, 8, 4, 'this is my first comment', '2023-02-17', 0);
->>>>>>> 0790cccb211f6ad17558ee408e0633d6edfb5249
+(34, 6, 1, 'Truyện này còn chưa có thời gian đọc nữa', '2023-02-17', 0),
+(35, 8, 1, 'alo ajinomoto', '2023-02-18', 0),
+(36, 2, 16, 'Why no comment ???', '2023-02-18', 0);
 
 -- --------------------------------------------------------
 
@@ -288,7 +282,7 @@ CREATE TABLE `reader` (
 INSERT INTO `reader` (`ID_reader`, `username`, `pwd`, `lock_status`) VALUES
 (1, 'test1', '123', 0),
 (2, 'reader2', '123456', 0),
-(3, 'reader3', '123456', 0),
+(3, 'reader3', '123456', 1),
 (9, 'test2', '123', 0),
 (16, 'hoanganh', '123', 0);
 
@@ -369,11 +363,7 @@ ALTER TABLE `chapter`
 -- AUTO_INCREMENT for table `comment_on_manga`
 --
 ALTER TABLE `comment_on_manga`
-<<<<<<< HEAD
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=35;
-=======
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=32;
->>>>>>> 0790cccb211f6ad17558ee408e0633d6edfb5249
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=37;
 
 --
 -- AUTO_INCREMENT for table `image_content`
@@ -391,11 +381,7 @@ ALTER TABLE `manga`
 -- AUTO_INCREMENT for table `reader`
 --
 ALTER TABLE `reader`
-<<<<<<< HEAD
   MODIFY `ID_reader` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
-=======
-  MODIFY `ID_reader` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
->>>>>>> 0790cccb211f6ad17558ee408e0633d6edfb5249
 
 --
 -- Constraints for dumped tables
