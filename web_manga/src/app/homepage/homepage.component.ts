@@ -4,6 +4,7 @@ import { IManga } from '../manga';
 import { MangaService } from '../manga.service';
 import { SearchService } from '../search.service';
 
+
 @Component({
   selector: 'app-homepage',
   templateUrl: './homepage.component.html',
@@ -13,6 +14,7 @@ export class HomepageComponent implements OnInit {
   public listManga: IManga[] = [];
   public listGenre: string[];
   totalChapter: number;
+  p: number =1;
 
   constructor(private _mangaService: MangaService, private route: Router, private _search: SearchService) { }
 

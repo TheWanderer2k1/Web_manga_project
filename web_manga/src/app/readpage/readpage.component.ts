@@ -25,13 +25,17 @@ export class ReadpageComponent implements OnInit {
       this.currentManga = manga!;
       this.currentChapterIndex = parseInt(chapter!);
     });
-    fetch(`http://localhost/webmanga/getListChapter.php?name=${this.currentManga}`).then((res) => res.json()).then(
-      response => {
-        //console.log(response);
-        this.listChapter = response;
-        this.currentChapter = this.listChapter[this.currentChapterIndex];
-      }
-    )
+    // fetch(`http://localhost/webmanga/getListChapter.php?name=${this.currentManga}`).then((res) => res.json()).then(
+    //   response => {
+    //     //console.log(response);
+    //     this.listChapter = response;
+    //     this.currentChapter = this.listChapter[this.currentChapterIndex];
+    //   }
+    // );
+    this._mangaService.getListChapter(this.currentManga).subscribe((res) => {
+      this.listChapter = res;
+      this.currentChapter = this.listChapter[this.currentChapterIndex];
+    })
   }
 
   onNext(){

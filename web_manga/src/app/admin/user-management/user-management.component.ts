@@ -42,5 +42,4 @@ export class UserManagementComponent implements OnInit {
       alert(res.msg);
     })
   }
-
-}
+  }

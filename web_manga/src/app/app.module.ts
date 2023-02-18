@@ -14,6 +14,7 @@ import { CommentComponent } from './comment/comment.component';
 import { DashboardComponent } from './admin/dashboard/dashboard.component';
 import { UserManagementComponent } from './admin/user-management/user-management.component';
 import { AdminComponent } from './admin/admin.component';
+import { NgxPaginationModule } from 'ngx-pagination';
 
 @NgModule({
   declarations: [
@@ -30,7 +31,8 @@ import { AdminComponent } from './admin/admin.component';
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    FormsModule
+    FormsModule,
+    NgxPaginationModule
   ],
   providers: [MangaService, LoginService, SearchService],
   bootstrap: [AppComponent]
