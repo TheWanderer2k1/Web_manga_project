@@ -8,6 +8,8 @@ import { WebsocketService } from 'src/app/websocket.service';
 })
 export class DashboardComponent implements OnInit {
   currentOnlineUser: any;
+  totalUsers: any;
+  isLoading: boolean = false;
   constructor(
     private websocketService: WebsocketService
   ) { }
@@ -15,7 +17,10 @@ export class DashboardComponent implements OnInit {
   ngOnInit(): void {
     setTimeout(() => {
       this.currentOnlineUser = this.websocketService.getCurrentOnlineUser();
+      this.totalUsers = 150;
+      this.isLoading = false;
     }, 1000);
+    this.isLoading = true;
     // this.currentOnlineUser = this.websocketService.getCurrentOnlineUser();
   }
 

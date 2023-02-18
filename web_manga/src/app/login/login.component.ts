@@ -27,7 +27,7 @@ export class LoginComponent implements OnInit {
         if (response != null || response != undefined){
           this._login.adminLogin(response.ID_admin ,response.admin);
 
-          this.route.navigate(['/admin']).then(()=>{
+          this.route.navigate(['/admin/dashboard']).then(()=>{
             window.location.reload();
           });
         }else

@@ -4,10 +4,15 @@
 <div class="dashboard-list d-flex">
   <div class="dashboard-item d-flex flex-column">
     <div class="item__label">Số người dùng đang online</div>
-    <div class="item__number">{{currentOnlineUser}}</div>
+    <div *ngIf="isLoading; else currentUser" class="loading">
+      <div class="spinner"></div>
+    </div>
+    <ng-template #currentUser>
+      <div class="item__number">{{ currentOnlineUser }}</div>
+    </ng-template>
   </div>
   <div class="dashboard-item d-flex flex-column">
     <div class="item__label">Tổng số lượt truy cập</div>
-    <div class="item__number">150</div>
+    <div class="item__number">{{totalUsers}}</div>
   </div>
 </div>
