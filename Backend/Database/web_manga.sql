@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Feb 17, 2023 at 03:36 AM
+-- Generation Time: Feb 17, 2023 at 04:07 PM
 -- Server version: 10.4.25-MariaDB
 -- PHP Version: 8.1.10
 
@@ -100,7 +100,7 @@ INSERT INTO `comment_on_manga` (`id`, `ID_manga`, `ID_reader`, `cmt`, `date`, `l
 (27, 1, 16, '1323', '2023-02-15', 0),
 (29, 10, 16, 'dwad', '2023-02-15', 0),
 (30, 1, 1, 'hello', '2023-02-17', 0),
-(31, 8, 4, 'this is my first comment', '2023-02-17', 0);
+(34, 6, 1, 'Truyện này còn chưa có thời gian đọc nữa', '2023-02-17', 0);
 
 -- --------------------------------------------------------
 
@@ -269,20 +269,20 @@ INSERT INTO `manga` (`ID_manga`, `name`, `author`, `genre`, `numberOfRead`, `thu
 CREATE TABLE `reader` (
   `ID_reader` int(11) NOT NULL,
   `username` varchar(50) NOT NULL,
-  `pwd` varchar(20) NOT NULL
+  `pwd` varchar(20) NOT NULL,
+  `lock_status` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `reader`
 --
 
-INSERT INTO `reader` (`ID_reader`, `username`, `pwd`) VALUES
-(1, 'test1', '123'),
-(2, 'reader2', '123456'),
-(3, 'reader3', '123456'),
-(4, 'bla', '123'),
-(9, 'test2', '123'),
-(16, 'hoanganh', '123');
+INSERT INTO `reader` (`ID_reader`, `username`, `pwd`, `lock_status`) VALUES
+(1, 'test1', '123', 0),
+(2, 'reader2', '123456', 0),
+(3, 'reader3', '123456', 0),
+(9, 'test2', '123', 0),
+(16, 'hoanganh', '123', 0);
 
 --
 -- Indexes for dumped tables
@@ -361,7 +361,7 @@ ALTER TABLE `chapter`
 -- AUTO_INCREMENT for table `comment_on_manga`
 --
 ALTER TABLE `comment_on_manga`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=32;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=35;
 
 --
 -- AUTO_INCREMENT for table `image_content`
@@ -379,7 +379,7 @@ ALTER TABLE `manga`
 -- AUTO_INCREMENT for table `reader`
 --
 ALTER TABLE `reader`
-  MODIFY `ID_reader` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
+  MODIFY `ID_reader` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
 
 --
 -- Constraints for dumped tables
@@ -390,7 +390,7 @@ ALTER TABLE `reader`
 --
 ALTER TABLE `comment_on_manga`
   ADD CONSTRAINT `fk_cmt_manga` FOREIGN KEY (`ID_manga`) REFERENCES `manga` (`ID_manga`),
-  ADD CONSTRAINT `fk_cmt_reader` FOREIGN KEY (`ID_reader`) REFERENCES `reader` (`ID_reader`);
+  ADD CONSTRAINT `fk_cmt_reader` FOREIGN KEY (`ID_reader`) REFERENCES `reader` (`ID_reader`) ON DELETE CASCADE;
 
 --
 -- Constraints for table `contain`

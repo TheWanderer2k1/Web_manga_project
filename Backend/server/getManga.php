@@ -15,7 +15,7 @@
                 $objChapter = new chapter($row1['ID_chapter'], $row1['name'], []);
                 $arrOfChapter[] = $objChapter;
             }
-            $objManga = new manga($row['ID_manga'], $row['name'], $row['author'], $row['genre'], $row['numberOfRead'], $row['thumbnail'],$row['description'], $arrOfChapter);
+            $objManga = new manga($row['ID_manga'], $row['name'], $row['author'], $row['genre'], $row['numberOfRead'], $row['thumbnail'],$row['description'], $arrOfChapter, 0);
             //$arrOfManga[] = $objManga;
             $arrOfChapter = []; 
         }

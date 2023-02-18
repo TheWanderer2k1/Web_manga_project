@@ -10,7 +10,12 @@
         $result = $conn->query($query);
 
         while ($row = $result->fetch_assoc()){
-            $objManga = new manga($row['ID_manga'], $row['name'], $row['author'], $row['genre'], $row['numberOfRead'], $row['thumbnail'],$row['description'], []);
+            //SELECT COUNT(ID_chapter) FROM has_chapter WHERE ID_manga = "1"
+            $query2 = 'SELECT COUNT(ID_chapter) as total FROM has_chapter WHERE ID_manga = "'. $row['ID_manga'] .'"';
+            $result2 = $conn->query($query2);
+            $row2 = $result2->fetch_assoc();
+
+            $objManga = new manga($row['ID_manga'], $row['name'], $row['author'], $row['genre'], $row['numberOfRead'], $row['thumbnail'],$row['description'], [], $row2['total']);
             $arrOfManga[] = $objManga;
         }
 

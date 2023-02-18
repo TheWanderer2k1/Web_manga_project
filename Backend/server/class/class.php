@@ -8,8 +8,9 @@ class manga{
     public $thumbnail;
     public $description;
     public $listChapter = [];
+    public $totalChapter;
 
-    public function __construct($ID_manga, $name, $author, $genre, $numberOfRead, $thumbnail, $description, $listChapter){
+    public function __construct($ID_manga, $name, $author, $genre, $numberOfRead, $thumbnail, $description, $listChapter, $totalChapter){
         $this->ID_manga = $ID_manga;
         $this->name = $name;
         $this->author = $author;
@@ -18,6 +19,7 @@ class manga{
         $this->thumbnail = $thumbnail;
         $this->description = $description;
         $this->listChapter = $listChapter;
+        $this->totalChapter = $totalChapter;
     }
 }
 

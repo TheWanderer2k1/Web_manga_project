@@ -16,7 +16,7 @@
         $result = $conn->query($query);
 
         while ($row = $result->fetch_assoc()){
-            $objManga = new manga($row['ID_manga'], $row['name'], $row['author'], $row['genre'], $row['numberOfRead'], $row['thumbnail'],$row['description'], []);
+            $objManga = new manga($row['ID_manga'], $row['name'], $row['author'], $row['genre'], $row['numberOfRead'], $row['thumbnail'],$row['description'], [], 0);
             $arrOfManga[] = $objManga;
         }
 
