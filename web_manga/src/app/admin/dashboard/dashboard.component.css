@@ -1,0 +1,22 @@
+.dashboard-list {
+  justify-content: space-around;
+}
+
+.dashboard-item {
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+  width: 300px;
+  height: 100px;
+  padding: 24px;
+  border-radius: 10px;
+  justify-content: center;
+  align-items: center;
+}
+
+.item__label {
+  font-size: 18px;
+  text-decoration: underline;
+}
+
+.item__number {
+  font-size: 26px;
+}

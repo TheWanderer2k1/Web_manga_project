@@ -24,18 +24,18 @@
         </div>
     </div>
 <!-- </div> -->
-    
+
 
 <!-- <div class="container"> -->
     <nav class="navbar navbar-expand-lg navbar-dark bg-secondary">
         <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
             <div class="navbar-nav">
                 <a class="nav-item nav-link" href="/homepage">Homepage</a>
-                <a class="nav-item nav-link text-warning" href="/admin" [hidden]="!hide_admin">AdminPage</a>
+                <a class="nav-item nav-link text-warning" href="/admin/dashboard" [hidden]="!hide_admin">AdminPage</a>
                 <!-- <a class="nav-item nav-link" >Genre</a> -->
             </div>
         </div>
-        <div class="collapse navbar-collapse justify-content-end"> 
+        <div class="collapse navbar-collapse justify-content-end">
             <div class="navbar-nav">
                 <a class="nav-item nav-link" href="/login" name="loginOrSignup" [hidden]="hide">Login</a>
                 <a class="nav-item nav-link" name="loginOrSignup" [hidden]="hide">/</a>
@@ -45,7 +45,7 @@
                 <a class="nav-item nav-link" (click)="onClickLogout()" id="Logout" [hidden]="!hide">Logout</a>
                 <!-- <a class="nav-item nav-link" (click)="onClickAdminLogout()" id="Logout" [hidden]="!hide_admin">Logout</a> -->
             </div>
-        </div>  
+        </div>
     </nav>
 
     <!-- <button routerLink="/homepage">

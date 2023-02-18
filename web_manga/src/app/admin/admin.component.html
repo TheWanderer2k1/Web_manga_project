@@ -121,7 +121,9 @@
 <div class="s-container">
   <div class="d-flex">
     <div class="side-bar">
-      <div class="side-bar__logo d-flex justify-content-center align-items-center">
+      <!-- <div
+        class="side-bar__logo d-flex justify-content-center align-items-center"
+      >
         <img
           src="https://drive.google.com/uc?export=view&id=13vmbqkiOKmHjRmdF1MpNikguUAsns0Ud"
           alt="img"
@@ -131,42 +133,38 @@
         />
       </div>
 
-        <hr />
-        <div class="side-bar__nav">
-          <ul class="nav-list">
-            <li
-              class="nav-item"
-              [ngStyle]="
-                choosingNav == NavItem.Dashboard ? choosingNavStyle : {}
-              "
-              (click)="onClickNav(NavItem.Dashboard)"
-            >
-              <i class="fas fa-home-lg-alt nav-item__icon"></i>Thống kê
-            </li>
-            <!-- <li
+      <hr /> -->
+      <div class="side-bar__nav">
+        <ul class="nav-list">
+          <li
+            class="nav-item"
+            [ngStyle]="choosingNav == NavItem.Dashboard ? choosingNavStyle : {}"
+            (click)="onClickNav(NavItem.Dashboard)"
+          >
+            <i class="fas fa-home-lg-alt nav-item__icon"></i>Thống kê
+          </li>
+          <!-- <li
               class="nav-item"
               [ngStyle]="choosingNav == NavItem.Manga ? choosingNavStyle : {}"
               (click)="onClickNav(NavItem.Manga)"
             >
               <i class="fas fa-newspaper nav-item__icon"></i>Quản lý Manga
             </li> -->
-            <li
-              class="nav-item"
-              [ngStyle]="choosingNav == NavItem.User ? choosingNavStyle : {}"
-              (click)="onClickNav(NavItem.User)"
-            >
-              <i class="fas fa-users nav-item__icon"></i>Quản lý người dùng
-            </li>
-            <li class="nav-item"
-            (click)="onClickNav(NavItem.Exit)"
-            >
-              <i class="fas fa-sign-out nav-item__icon"></i>Trở về trang chính
-            </li>
-          </ul>
-        </div>
+          <li
+            class="nav-item"
+            [ngStyle]="choosingNav == NavItem.User ? choosingNavStyle : {}"
+            (click)="onClickNav(NavItem.User)"
+          >
+            <i class="fas fa-users nav-item__icon"></i>Quản lý người dùng
+          </li>
+          <!-- <li class="nav-item" (click)="onClickNav(NavItem.Exit)">
+            <i class="fas fa-sign-out nav-item__icon"></i>Trở về trang chính
+          </li> -->
+        </ul>
+      </div>
     </div>
     <div class="body">
-      <div class="body-header d-flex flex-row align-items-center">
+      <!-- <div class="body-header d-flex flex-row align-items-center">
         <div class="header__search d-flex flex-row align-items-center">
           <input
             type="search"
@@ -188,7 +186,7 @@
           </div>
         </div>
       </div>
-      <hr>
+      <hr /> -->
       <div class="body-content">
         <router-outlet></router-outlet>
       </div>
