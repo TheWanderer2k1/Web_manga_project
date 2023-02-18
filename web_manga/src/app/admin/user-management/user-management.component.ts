@@ -18,6 +18,7 @@ export class UserManagementComponent implements OnInit {
   ngOnInit(): void {
     this._mangaService.getUsers().subscribe((data) => {
       this.listUser = data;
+      //console.log(this.listUser);
     });
   }
 

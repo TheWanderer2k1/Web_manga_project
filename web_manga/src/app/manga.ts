@@ -43,7 +43,7 @@ export interface IUserControl{
     ID_reader: number,
     username: string, 
     pwd: string,
-    comments: IComment[]
+    lock_status: number
 }
 
 export interface message{

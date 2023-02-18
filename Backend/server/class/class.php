@@ -63,13 +63,13 @@ class user{
     public $ID_reader;
     public $username;
     public $pwd;
-    public $comments = [];
+    public $lock_status;
 
-    public function __construct($ID_reader, $username, $pwd, $comments){
+    public function __construct($ID_reader, $username, $pwd, $lock_status){
         $this->ID_reader = $ID_reader;
         $this->username = $username;
         $this->pwd = $pwd;
-        $this->comments = $comments;
+        $this->lock_status = $lock_status;
     }
 }
 
