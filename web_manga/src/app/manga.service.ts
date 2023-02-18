@@ -79,6 +79,12 @@ export class MangaService {
     return genres;
   }
 
+  getBadWords()
+  {
+    let badWords = ["fck", "dck", "motherfucker", "dckhead"];
+    return badWords;  
+  }
+
   getListComments(ID_manga: number): Observable<IComment[]>{
     let queryParam = new HttpParams();
     queryParam = queryParam.append("ID_manga", ID_manga);

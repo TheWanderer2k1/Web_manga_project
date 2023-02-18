@@ -1,7 +1,7 @@
 <?php
     try{
         require('./connection/db.inc.php');
-        $query = 'INSERT INTO reader (ID_reader, username, pwd) VALUES (NULL, "'. $_POST['username'] .'", "'. $_POST['pwd'] . '")';
+        $query = 'INSERT INTO reader (ID_reader, username, pwd, lock_status) VALUES (NULL, "'. $_POST['username'] .'", "'. $_POST['pwd'] . '", 0)';
         if ($conn->query($query)){
             $query = 'SELECT ID_reader FROM reader WHERE username = "'. $_POST['username'] .'" AND pwd = "'. $_POST['pwd'] .'"';
             $result = $conn->query($query);

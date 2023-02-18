@@ -13,7 +13,7 @@ export class CommentComponent implements OnInit {
   comments: IComment[];
   user: IUser;
   isLogin: boolean;
-
+  badWords: String[];
   constructor(private _login: LoginService, private _manga: MangaService) { }
 
   ngOnInit(): void {
@@ -23,6 +23,8 @@ export class CommentComponent implements OnInit {
     }else{
       this.isLogin = false;
     }
+
+    this.badWords = this._manga.getBadWords();
 
     this._manga.getListComments(this.manga.ID_manga).subscribe(
       data => {
@@ -39,12 +41,25 @@ export class CommentComponent implements OnInit {
   }
 
   onSubmit(data: any){
-    let date = new Date();
-    let today = [date.getFullYear(), date.getMonth() + 1, date.getDate()].join('-');
-    this._manga.addComment(this.manga.ID_manga, this.user.ID_reader, data.cmt, today).subscribe(
+    let check = true;
+    for (let index = 0; index < this.badWords.length; index++) {
+      if (data.cmt.includes(this.badWords[index])) {
+        check = false;
+        break;
+      }
+    }
+    if (check) {
+      let date = new Date();
+      let today = [date.getFullYear(), date.getMonth() + 1, date.getDate()].join('-');
+      this._manga.addComment(this.manga.ID_manga, this.user.ID_reader, data.cmt, today).subscribe(
       data =>{
         this.comments.push(data);
-      }
-    )
+        }
+      )
+    }
+    else
+    {
+      alert("không được comment từ xấu");
+    }
   }
 }
