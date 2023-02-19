@@ -31,7 +31,7 @@
 - Comment truyện (chỉ comment được khi đã login)
 - Tìm kiếm (theo tên truyện, tác giả, thể loại)
 - Chức năng admin:
-	- Thống kê số người đang dùng web
+	- Thống kê số người đang dùng web: chức năng này cần phải chạy server count user trước khi khởi động chương trình (./Backend/server/currentOnlineUser/)
 	- Quản lý người dùng (khóa/mở khóa tài khoản, xóa người dùng)
 	- Admin account: 
 		- username: hoanganh 

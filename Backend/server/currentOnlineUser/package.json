@@ -1,0 +1,15 @@
+{
+  "dependencies": {
+    "ws": "^8.12.1"
+  },
+  "name": "currentonlineuser",
+  "description": "step 1: npm install ws\r step 2: npm init\r step 3: node currentOnlineServer.js",
+  "version": "1.0.0",
+  "main": "currentOnlineUsers.js",
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC"
+}
