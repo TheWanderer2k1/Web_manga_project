@@ -14,6 +14,7 @@
 2. Chạy frontend:
 	- Di chuyển vào thư mục web_manga
 	- Bật cửa sổ terminal và chạy lệnh ng serve
+	- Chương trình nằm tại đường link (http://localhost:4200/)
 
 ### Một số bug có thể có:
 1. Không hiển thị dữ liệu, chỉ có giao diện:
