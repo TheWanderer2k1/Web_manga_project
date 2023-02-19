@@ -1,9 +1,9 @@
 <div class="container text-warning">
     <div class="row">
-        <div class="col-3">
+        <div [ngClass]="currentDevice != Device.Mobile ? 'col-3' : 'col-5'">
             <img src="{{manga.thumbnail}}" class="border border-secondary" alt="thumbnail_image"><br>
         </div>
-        <div class="col-9">
+        <div [ngClass]="currentDevice != Device.Mobile ? 'col-9' : 'col-7'">
             <div class="text-info h3">{{manga.name}}</div>
             <div class="container">
                 <div class="row pt-3">

@@ -4,3 +4,14 @@
     -webkit-box-orient: vertical;
     overflow: hidden;
 }
+
+.manga__info {
+  width: 450px;
+}
+
+@media (max-width: 800px) {
+  .manga__info {
+    width: auto;
+  }
+
+}

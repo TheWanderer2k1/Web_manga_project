@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Route, Router } from '@angular/router';
+import { CurrentDeviceService, Device } from '../current-device.service';
 import { LoginService } from '../login.service';
 import { IManga, IUserControl } from '../manga';
 import { MangaService } from '../manga.service';
@@ -23,10 +24,13 @@ export class AdminComponent implements OnInit {
   choosingNavStyle: any = {
     'background-color': '#FF5C40',
   };
+  readonly Device = Device;
+  currentDevice: Device;
   constructor(
     private _mangaService: MangaService,
     private _login: LoginService,
-    private _route: Router
+    private _route: Router,
+    private currentDeviceService: CurrentDeviceService
   ) {}
 
   ngOnInit(): void {
@@ -40,6 +44,8 @@ export class AdminComponent implements OnInit {
       this.listUser = data;
       //console.log(this.listUser);
     });
+
+    this.currentDevice = this.currentDeviceService.getCurrentDevice();
   }
 
   onClickNav(nav: NavItem) {

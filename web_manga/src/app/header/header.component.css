@@ -1,0 +1,25 @@
+.mr-6 {
+  margin-right: 6px;
+}
+
+.ml-6 {
+  margin-left: 6px;
+}
+
+.navbar-nav .nav-item {
+  cursor: pointer;
+}
+
+.logo__img {
+  cursor: pointer;
+}
+
+@media (max-width: 800px) {
+  .navbar {
+    padding: 0 6px;
+  }
+  .navbar-nav .nav-item {
+    font-size: 26px;
+    margin: 0 6px;
+  }
+}

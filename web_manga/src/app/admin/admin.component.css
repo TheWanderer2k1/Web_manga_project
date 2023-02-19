@@ -9,7 +9,8 @@
 .side-bar {
   width: 260px;
   height: 100vh;
-  background-color: #aaa;
+  /* background-color: #aaa; */
+  background-color: #6C757D;
   padding: 12px;
 }
 
@@ -69,4 +70,10 @@
 
 .body-content {
   margin: 24px;
+}
+
+@media (max-width: 800px) {
+  .side-bar {
+    width: auto;
+  }
 }

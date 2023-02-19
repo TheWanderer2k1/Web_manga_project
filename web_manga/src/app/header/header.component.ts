@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, HostListener, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { CurrentDeviceService, Device } from '../current-device.service';
 import { LoginService } from '../login.service';
 import { IAdmin, IManga, IUser } from '../manga';
 import { MangaService } from '../manga.service';
@@ -9,7 +10,7 @@ import { SearchService } from '../search.service';
 @Component({
   selector: 'app-header',
   templateUrl: './header.component.html',
-  styleUrls: ['./header.component.css']
+  styleUrls: ['./header.component.css'],
 })
 export class HeaderComponent implements OnInit {
   username: string;
@@ -17,47 +18,57 @@ export class HeaderComponent implements OnInit {
   admin: IAdmin;
   hide: boolean;
   hide_admin: boolean;
+  currentDevice: Device;
+  readonly Device = Device;
+  constructor(
+    private router: Router,
+    private _login: LoginService,
+    private currentDeviceService: CurrentDeviceService
+  ) {}
 
-  constructor(private router: Router, private _login: LoginService) { }
+  @HostListener('window:resize', ['$event'])
+  onResize(event: any) {
+    // this.screenWidth = window.innerWidth;
+    // debugger;
+  }
 
   ngOnInit(): void {
     this.admin = this._login.getAdmin();
     //do something
-    if (this.admin != null){
+    if (this.admin != null) {
       this._login.userLogout();
       this.hide_admin = true;
       this.hide = true;
       this.username = this.admin.admin;
-    }else{
+    } else {
       this.hide_admin = false;
       this.user = this._login.getUser();
       //do something
-      if (this.user != null){
+      if (this.user != null) {
         this.hide = true;
         this.username = this.user.username;
-      }else{
+      } else {
         this.hide = false;
-    }
+      }
     }
 
     //let elements = document.getElementsByName("loginOrSignup");
-    
+    this.currentDevice = this.currentDeviceService.getCurrentDevice();
   }
 
-  onClickSubmit(data: any){
+  onClickSubmit(data: any) {
     //console.log(data.select);
     let searchBy = data.select;
-    if (searchBy == "" || searchBy == undefined)
-      searchBy = 'byName';
-    this.router.navigate(['/search', searchBy, data.str.trim()]).then(()=>{
+    if (searchBy == '' || searchBy == undefined) searchBy = 'byName';
+    this.router.navigate(['/search', searchBy, data.str.trim()]).then(() => {
       window.location.reload();
     });
   }
 
-  onClickLogout(){
+  onClickLogout() {
     this._login.adminLogout();
     this._login.userLogout();
-    this.router.navigate(['/homepage']).then(()=>{
+    this.router.navigate(['/homepage']).then(() => {
       window.location.reload();
     });
   }

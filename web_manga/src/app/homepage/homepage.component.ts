@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { CurrentDeviceService, Device } from '../current-device.service';
 import { IManga } from '../manga';
 import { MangaService } from '../manga.service';
 import { SearchService } from '../search.service';
@@ -15,8 +16,10 @@ export class HomepageComponent implements OnInit {
   public listGenre: string[];
   totalChapter: number;
   p: number =1;
+  currentDevice: Device;
+  readonly Device = Device;
 
-  constructor(private _mangaService: MangaService, private route: Router, private _search: SearchService) { }
+  constructor(private _mangaService: MangaService, private route: Router, private _search: SearchService, private currentDeviceService: CurrentDeviceService) { }
 
   ngOnInit(): void {
     this._mangaService.getListManga()
@@ -25,6 +28,7 @@ export class HomepageComponent implements OnInit {
     });
 
     this.listGenre = this._mangaService.getGenres();
+    this.currentDevice = this.currentDeviceService.getCurrentDevice();
   }
 
   selectManga(name: string){

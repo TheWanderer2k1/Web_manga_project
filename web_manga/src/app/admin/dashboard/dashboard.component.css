@@ -43,3 +43,14 @@
     transform: rotate(360deg);
   }
 }
+
+@media (max-width: 800px) {
+  .dashboard-list {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .dashboard-item {
+    margin-top: 12px;
+  }
+ }

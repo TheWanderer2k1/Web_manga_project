@@ -1,58 +1,166 @@
 <!-- <div class="container"> -->
-    <div class="row mt-0 ms-1 px-2 p-3">
-        <div class="col">
-            <img src="https://drive.google.com/uc?export=view&id=13vmbqkiOKmHjRmdF1MpNikguUAsns0Ud" alt="img" width="180px" height="50px" routerLink="/homepage">
+<div class="row mt-0 ms-1 px-2 p-3">
+  <div class="col">
+    <img
+      src="https://drive.google.com/uc?export=view&id=13vmbqkiOKmHjRmdF1MpNikguUAsns0Ud"
+      alt="img"
+      width="180px"
+      height="50px"
+      routerLink="/homepage"
+      class="logo__img"
+    />
+  </div>
+  <div class="col">
+    <form #searchForm="ngForm" (ngSubmit)="onClickSubmit(searchForm.value)">
+      <div class="d-flex flex-row-reverse">
+        <div>
+          <input
+            *ngIf="currentDevice != Device.Mobile; else searchIcon"
+            type="submit"
+            value="Search"
+            class="btn btn-outline-primary ml-6"
+          />
+          <ng-template #searchIcon>
+            <button type="submit" class="btn btn-outline-primary ml-6">
+              <i class="fas fa-search"></i>
+            </button>
+          </ng-template>
         </div>
-        <div class="col">
-            <form #searchForm="ngForm" (ngSubmit)="onClickSubmit(searchForm.value)">
-                <div class="d-flex flex-row-reverse">
-                    <div>
-                        <input type="submit" value="search" class="btn btn-outline-primary">
-                    </div>
-                    <div>
-                        <input type="search" name="str" class="form-control rounded" placeholder="Search" aria-label="Search" aria-describedby="search-addon" ngModel>
-                    </div>
-                    <div>
-                        <select name="select" class="form-select" style="width: auto;" aria-label="Default select example" ngModel>
-                            <option value="" disabled>Search by</option>
-                            <option ngValue="byName">By name</option>
-                            <option ngValue="byAuthor">By author</option>
-                        </select>
-                    </div>
-                </div>
-            </form>
+        <div>
+          <input
+            type="search"
+            name="str"
+            class="form-control rounded"
+            placeholder="Search"
+            aria-label="Search"
+            aria-describedby="search-addon"
+            ngModel
+          />
         </div>
-    </div>
+        <div>
+          <select
+            name="select"
+            class="form-select mr-6"
+            style="width: auto"
+            aria-label="Default select example"
+            ngModel
+          >
+            <option value="" disabled>Search by</option>
+            <option ngValue="byName">By name</option>
+            <option ngValue="byAuthor">By author</option>
+          </select>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>
 <!-- </div> -->
 
-
 <!-- <div class="container"> -->
-    <nav class="navbar navbar-expand-lg navbar-dark bg-secondary">
-        <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-            <div class="navbar-nav">
-                <a class="nav-item nav-link" href="/homepage">Homepage</a>
-                <a class="nav-item nav-link text-warning" href="/admin/dashboard" [hidden]="!hide_admin">AdminPage</a>
-                <!-- <a class="nav-item nav-link" >Genre</a> -->
-            </div>
-        </div>
-        <div class="collapse navbar-collapse justify-content-end">
-            <div class="navbar-nav">
-                <a class="nav-item nav-link" href="/login" name="loginOrSignup" [hidden]="hide">Login</a>
-                <a class="nav-item nav-link" name="loginOrSignup" [hidden]="hide">/</a>
-                <a class="nav-item nav-link" href="/signin" name="loginOrSignup" [hidden]="hide">Sign up</a>
-                <a class="nav-item nav-link" id="username" [hidden]="!hide">Hi! {{username}}</a>
-                <!-- <a class="nav-item nav-link" id="username" [hidden]="!hide_admin">Hi! Admin {{admin.admin}</a> -->
-                <a class="nav-item nav-link" (click)="onClickLogout()" id="Logout" [hidden]="!hide">Logout</a>
-                <!-- <a class="nav-item nav-link" (click)="onClickAdminLogout()" id="Logout" [hidden]="!hide_admin">Logout</a> -->
-            </div>
-        </div>
-    </nav>
+<ng-container *ngIf="currentDevice != Device.Mobile; else mobileNav">
+  <nav class="navbar navbar-expand-lg navbar-dark bg-secondary">
+    <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+      <div class="navbar-nav">
+        <a class="nav-item nav-link" href="/homepage"
+          ><i class="fas fa-home-alt mr-6"></i>Homepage</a
+        >
+        <a
+          class="nav-item nav-link text-warning"
+          href="/admin/dashboard"
+          [hidden]="!hide_admin"
+          ><i class="fas fa-user-lock mr-6"></i>AdminPage</a
+        >
+        <!-- <a class="nav-item nav-link" >Genre</a> -->
+      </div>
+    </div>
+    <div class="collapse navbar-collapse justify-content-end">
+      <div class="navbar-nav">
+        <a
+          class="nav-item nav-link"
+          href="/login"
+          name="loginOrSignup"
+          [hidden]="hide"
+          >Login</a
+        >
+        <a class="nav-item nav-link" name="loginOrSignup" [hidden]="hide">/</a>
+        <a
+          class="nav-item nav-link"
+          href="/signin"
+          name="loginOrSignup"
+          [hidden]="hide"
+          >Sign up</a
+        >
+        <a class="nav-item nav-link" id="username" [hidden]="!hide"
+          >Hi! {{ username }}</a
+        >
+        <!-- <a class="nav-item nav-link" id="username" [hidden]="!hide_admin">Hi! Admin {{admin.admin}</a> -->
+        <a
+          class="nav-item nav-link"
+          (click)="onClickLogout()"
+          id="Logout"
+          [hidden]="!hide"
+          >Logout <i class="fas fa-sign-out-alt ml-6"></i
+        ></a>
+        <!-- <a class="nav-item nav-link" (click)="onClickAdminLogout()" id="Logout" [hidden]="!hide_admin">Logout</a> -->
+      </div>
+    </div>
+  </nav>
+</ng-container>
+<ng-template #mobileNav>
+  <div class="navbar navbar-expand-lg navbar-dark bg-secondary">
+    <div class="" id="navbarNavAltMarkup">
+      <div class="navbar-nav d-flex flex-row">
+        <a class="nav-item nav-link" href="/homepage"
+          ><i class="fas fa-home-alt mr-6"></i
+        ></a>
+        <a
+          class="nav-item nav-link text-warning"
+          href="/admin/dashboard"
+          [hidden]="!hide_admin"
+          ><i class="fas fa-user-lock mr-6"></i
+        ></a>
+        <!-- <a class="nav-item nav-link" >Genre</a> -->
+      </div>
+    </div>
+    <div class="d-flex justify-content-end">
+      <div class="navbar-nav d-flex flex-row">
+        <a
+          class="nav-item nav-link"
+          href="/login"
+          name="loginOrSignup"
+          [hidden]="hide"
+          >Login</a
+        >
+        <a class="nav-item nav-link" name="loginOrSignup" [hidden]="hide">/</a>
+        <a
+          class="nav-item nav-link"
+          href="/signin"
+          name="loginOrSignup"
+          [hidden]="hide"
+          >Sign up</a
+        >
+        <a class="nav-item nav-link" id="username" [hidden]="!hide"
+          >Hi! {{ username }}</a
+        >
+        <!-- <a class="nav-item nav-link" id="username" [hidden]="!hide_admin">Hi! Admin {{admin.admin}</a> -->
+        <a
+          class="nav-item nav-link"
+          (click)="onClickLogout()"
+          id="Logout"
+          [hidden]="!hide"
+        >
+          <i class="fas fa-sign-out-alt ml-6"></i
+        ></a>
+        <!-- <a class="nav-item nav-link" (click)="onClickAdminLogout()" id="Logout" [hidden]="!hide_admin">Logout</a> -->
+      </div>
+    </div>
+  </div>
+</ng-template>
 
-    <!-- <button routerLink="/homepage">
+<!-- <button routerLink="/homepage">
         Homepage
     </button>
     <button>
         Thể loại
     </button> -->
 <!-- </div> -->
-
